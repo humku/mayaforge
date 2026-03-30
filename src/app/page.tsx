@@ -109,11 +109,11 @@ export default function Home() {
             MAYA FORGE
           </button>
           <div className="hidden md:flex items-center gap-10">
-            {["services","amazon","projects","contact"].map(s => (
+            {["services","amazon","projects","contact","portfolio"].map(s => (
               <button key={s} onClick={() => scrollTo(s)}
                 className="font-sans text-[11px] tracking-[0.22em] uppercase transition-colors duration-300 hover:text-[#e8c97a]"
                 style={{color:"rgba(240,235,224,0.4)"}}>
-                {s === "amazon" ? "AMAZON" : s}
+                {s === "amazon" ? "AMAZON" : s === "portfolio" ? "PORTFOLIO" : s}
               </button>
             ))}
           </div>
@@ -132,7 +132,7 @@ export default function Home() {
       {/* Mobile drawer */}
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-[#080808] flex flex-col items-center justify-center gap-12">
-          {["services","amazon","projects","contact"].map(s => (
+          {["services","amazon","projects","contact","portfolio"].map(s => (
             <button key={s} onClick={() => scrollTo(s)}
               className="font-display text-5xl font-light italic hover:text-[#e8c97a] transition-colors capitalize"
               style={{color:"rgba(240,235,224,0.8)"}}>
@@ -501,7 +501,7 @@ export default function Home() {
             <p className="font-mono text-[9px] tracking-[0.35em] uppercase mb-5" style={{color:"rgba(201,168,76,0.35)"}}>
               NAVIGATE
             </p>
-            {["services","amazon","projects","contact"].map(s => (
+            {["services","amazon","projects","contact","portfolio"].map(s => (
               <button key={s} onClick={() => scrollTo(s)}
                 className="font-sans text-sm capitalize text-left block mb-3 hover:text-[#e8c97a] transition-colors"
                 style={{color:"rgba(240,235,224,0.35)"}}>
