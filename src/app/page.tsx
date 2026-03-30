@@ -384,7 +384,7 @@ export default function Home() {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12"><div className="gold-line" /></div>
-
+      <TestimonialsSection />
       {/* ══ CONTACT ══ */}
       <section id="contact" className="py-32 px-6 md:px-12 bg-[#080808]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
