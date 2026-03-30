@@ -7,7 +7,7 @@
 /* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; cursor: none; }
-body { background: #080808; color: #ffffff; overflow-x: hidden; }
+body { background: #080808; color: #ffffff; overflow-x: hidden; text-shadow: 0 0 8px rgba(255,255,255,0.15); }
 ::selection { background: #c9a84c44; color: #e8c97a; }
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: #080808; }
@@ -58,7 +58,7 @@ body { background: #080808; color: #ffffff; overflow-x: hidden; }
   transform: translateY(-2px);
 }
 .ghost-btn {
-  border: 1px solid rgba(201,168,76,0.25); color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(201,168,76,0.25); color: rgba(255,255,255,1);
   transition: all 0.3s ease;
 }
 .ghost-btn:hover { border-color: rgba(201,168,76,0.6); color: #e8c97a; }
