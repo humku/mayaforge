@@ -71,6 +71,7 @@ export default function Home() {
 
   const scrollTo = (id: string) => {
     setMenuOpen(false);
+    if (id === "portfolio") { window.location.href = "/portfolio"; return; }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
