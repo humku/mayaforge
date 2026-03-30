@@ -1,8 +1,9 @@
-import TestimonialsSection from "@/components/TestimonialsSection";
+
 "use client";
 import { useState, useEffect, FormEvent } from "react";
 import Image from "next/image";
 import MagicCursor from "@/components/MagicCursor";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 /* ── Data ───────────────────────────────────────────────── */
 
