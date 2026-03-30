@@ -396,7 +396,7 @@ export default function Home() {
               Ready to elevate your content with AI? Drop us a message and we&apos;ll get back to you within 24 hours.
             </p>
             {[
-              { label:"EMAIL",    val:"hello@mayaiservices.com" },
+              { label:"EMAIL",    val:"m.abdullah@mayaiservices.com" },
               { label:"PLATFORM", val:"Available on Upwork"     },
               { label:"RESPONSE", val:"Within 24 hours"         },
             ].map(item => (
