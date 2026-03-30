@@ -1,3 +1,4 @@
+import TestimonialsSection from "@/components/TestimonialsSection";
 "use client";
 import { useState, useEffect, FormEvent } from "react";
 import Image from "next/image";
