@@ -371,7 +371,7 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                   <span className="font-mono text-[10px] tracking-[0.4em] uppercase" style={{color:"rgba(201,168,76,0.95)"}}>
-                    AI VIDEO PRODUCTION — FEATURED WORK
+                    AI IMAGE & CHARACTER DESIGN — FEATURED WORK
                   </span>
                 </div>
               </div>
@@ -385,8 +385,8 @@ export default function Home() {
                 />
               </div>
               <div className="px-6 py-4" style={{borderTop:"1px solid rgba(201,168,76,0.1)"}}>
-                <h3 className="font-display text-xl" style={{color:"rgba(240,235,224,1)"}}>AI Video Production Reel</h3>
-                <p className="font-sans text-xs mt-1" style={{color:"rgba(240,235,224,0.65)"}}>Produced & directed by Maya Forge</p>
+                <h3 className="font-display text-xl" style={{color:"rgba(240,235,224,1)"}}>AI Image & Character Design Showcase</h3>
+                <p className="font-sans text-xs mt-1" style={{color:"rgba(240,235,224,0.65)"}}>All images & characters in this video designed by Maya Forge</p>
               </div>
             </div>
           </div>
