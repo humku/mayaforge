@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import Image from "next/image";
 import MagicCursor from "@/components/MagicCursor";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import CarFlagCarousel from "@/components/CarFlagCarousel";
 
 /* ── Data ───────────────────────────────────────────────── */
 
@@ -311,6 +312,11 @@ export default function Home() {
                 </div>
 
                 <p className="font-sans font-light text-xs leading-relaxed flex-1" style={dimText}>{d.desc}</p>
+                {d.title === "Car Flag Design" && (
+  <div className="mt-2 -mx-6 -mb-2">
+    <CarFlagCarousel />
+  </div>
+)}
 
                 {/* File formats badge */}
                 <div className="flex items-center justify-between pt-3" style={{borderTop:"1px solid rgba(201,168,76,0.07)"}}>
