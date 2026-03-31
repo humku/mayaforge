@@ -364,6 +364,33 @@ export default function Home() {
             </p>
           </div>
 
+{/* ── Featured Video ── */}
+          <div className="col-span-full mb-3 reveal">
+            <div className="relative w-full overflow-hidden" style={{border:"1px solid rgba(201,168,76,0.15)", background:"#0a0a0a"}}>
+              <div className="flex items-center justify-between px-6 py-4" style={{borderBottom:"1px solid rgba(201,168,76,0.1)"}}>
+                <div className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="font-mono text-[10px] tracking-[0.4em] uppercase" style={{color:"rgba(201,168,76,0.95)"}}>
+                    AI VIDEO PRODUCTION — FEATURED WORK
+                  </span>
+                </div>
+              </div>
+              <div className="relative w-full" style={{paddingBottom:"56.25%"}}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/_oFeWefWoZY?rel=0&modestbranding=1"
+                  title="Maya Forge — AI Video Production"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="px-6 py-4" style={{borderTop:"1px solid rgba(201,168,76,0.1)"}}>
+                <h3 className="font-display text-xl" style={{color:"rgba(240,235,224,1)"}}>AI Video Production Reel</h3>
+                <p className="font-sans text-xs mt-1" style={{color:"rgba(240,235,224,0.65)"}}>Produced & directed by Maya Forge</p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {projects.map((p, i) => (
               <div key={p.title}
