@@ -29,5 +29,5 @@ const images = [
 ];
 
 export default function CarFlagCarousel() {
-  return <DesignCarousel images={images} alt="Car Flag Design" />;
+  return <DesignCarousel images={images} alt="Car Flag Design" folder="Flag_Design" />;
 }
