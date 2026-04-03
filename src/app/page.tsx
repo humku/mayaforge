@@ -18,8 +18,7 @@ const services = [
 ];
 
 const amazonDesigns = [
-  { icon: "flag",           title: "Car Flag Design",    desc: "Bold, high-visibility car flag artwork built for maximum print clarity. Custom sizes, any niche.",                                    files: "AI + PNG + PDF"          },
-  { icon: "air",            title: "Feather Flag Design",desc: "Tall vertical feather flag artwork with perfect proportions for outdoor display. Bleed and safe zones included.",                    files: "AI + SVG + PDF"          },
+  { icon: "flag",           title: "Flag Design",    desc: "Bold, high-visibility car flag artwork built for maximum print clarity. Custom sizes, any niche.",                                    files: "AI + PNG + PDF"          },
   { icon: "wallpaper",      title: "Wall Art",           desc: "Premium decorative wall art for Amazon listings. Abstract, photorealistic, seasonal — every style.",                                 files: "PNG + TIFF + JPEG"       },
   { icon: "crop_landscape", title: "Wall Canvas",        desc: "Gallery-quality canvas designs with proper wrap allowance and print margins. Upload-ready for Amazon POD.",                          files: "PNG + PDF"               },
   { icon: "texture",        title: "Tapestry Design",    desc: "Large-format tapestry artwork with rich textures and vivid colour profiles optimised for woven fabric printing.",                    files: "PNG + TIFF"              },
@@ -42,8 +41,8 @@ const platforms = [
 ];
 
 const marqueeItems = [
-  "AI IMAGE DESIGN","CAR FLAG","FEATHER FLAG","WALL ART","WALL CANVAS","TAPESTRY","METAL SIGNS","CANVAS SETS",
-  "AI IMAGE DESIGN","CAR FLAG","FEATHER FLAG","WALL ART","WALL CANVAS","TAPESTRY","METAL SIGNS","CANVAS SETS",
+  "AI IMAGE DESIGN","FLAG DESIGN","WALL ART","WALL CANVAS","TAPESTRY","METAL SIGNS","CANVAS SETS",
+  "AI IMAGE DESIGN","FLAG DESIGN","WALL ART","WALL CANVAS","TAPESTRY","METAL SIGNS","CANVAS SETS",
 ];
 
 type Status = "idle"|"loading"|"success"|"error";
@@ -312,11 +311,15 @@ export default function Home() {
                 </div>
 
                 <p className="font-sans font-light text-xs leading-relaxed flex-1" style={dimText}>{d.desc}</p>
+                <p className="font-sans font-light text-xs leading-relaxed flex-1" style={dimText}>{d.desc}</p>
+
                 {d.title === "Car Flag Design" && (
-  <div className="mt-2 -mx-6 -mb-2">
-    <CarFlagCarousel />
-  </div>
-)}
+                  <div className="mt-2 -mx-6 -mb-2">
+                    <CarFlagCarousel />
+                  </div>
+                )}
+
+
 
                 {/* File formats badge */}
                 <div className="flex items-center justify-between pt-3" style={{borderTop:"1px solid rgba(201,168,76,0.07)"}}>
