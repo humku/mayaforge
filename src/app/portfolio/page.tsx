@@ -5,24 +5,26 @@ import MagicCursor from '@/components/MagicCursor';
 
 /* ── Data ───────────────────────────────────────────────── */
 
+const CLOUD = "dzsq6win3";
+const img = (publicId: string) =>
+  `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_800/${publicId}`;
+
 const images = [
-  { id: 1, category: 'AI ART',     title: 'Cosmic brand campaign',  src: '', wide: true  },
-  { id: 2, category: 'AMAZON POD', title: 'Feather flag design',    src: '', wide: false },
-  { id: 3, category: 'WALL ART',   title: 'Abstract series vol.1',  src: '', wide: false },
-  { id: 4, category: 'BRAND',      title: 'Identity concept',       src: '', wide: false },
-  { id: 5, category: 'AMAZON POD', title: 'Canvas set — triptych',  src: '', wide: false },
-  { id: 6, category: 'AI ART',     title: 'Surreal landscape',      src: '', wide: true  },
+  { id: 1, category: 'FLAG DESIGN',  title: 'Flag Design',         src: img('flag_design_abetne'),           wide: true  },
+  { id: 2, category: 'FLAG DESIGN',  title: 'Flag Design',         src: img('flag_design_abetne'),           wide: false },
+  { id: 3, category: 'DISHWASHER',   title: 'Dishwasher Magnet',   src: img('Diswasher_magnet_5_tyh5ny'),    wide: false },
+  { id: 4, category: 'DISHWASHER',   title: 'Dishwasher Magnet',   src: img('Diswasher_magnet_5_tyh5ny'),    wide: false },
+  { id: 5, category: 'METAL SIGNS',  title: 'Metal Indoor Sign',   src: img('metal_indoor_signs_47_r2dnao'), wide: false },
+  { id: 6, category: 'METAL SIGNS',  title: 'Metal Indoor Sign',   src: img('metal_indoor_signs_47_r2dnao'), wide: true  },
+  { id: 7, category: 'TABLE RUNNER', title: 'Custom Table Runner', src: img('Custom_Table_Runner_cs3haz'),   wide: true  },
+  { id: 8, category: 'TABLE RUNNER', title: 'Custom Table Runner', src: img('Custom_Table_Runner_cs3haz'),   wide: false },
 ];
-
 const videos = [
-  { id: 1, category: 'AI VIDEO', title: 'Cinematic product reel',  src: '', wide: true  },
-  { id: 2, category: 'SHORTS',   title: 'Viral AI short #1',       src: '', wide: false },
-  { id: 3, category: 'REELS',    title: 'Brand reel — fashion',    src: '', wide: false },
-  { id: 4, category: 'AI VIDEO', title: 'Ambient loop — nature',   src: '', wide: false },
-  { id: 5, category: 'SHORTS',   title: 'Viral AI short #2',       src: '', wide: false },
+  { id: 1, category: 'AI VIDEO', title: 'AI Image & Character Design Showcase', src: 'https://www.youtube.com/embed/_oFeWefWoZY', wide: true, isYoutube: true },
 ];
+  
 
-const imageCategories = ['ALL', 'AI ART', 'AMAZON POD', 'BRAND', 'WALL ART'];
+const imageCategories = ['ALL', 'FLAG DESIGN', 'DISHWASHER', 'METAL SIGNS', 'TABLE RUNNER'];
 const videoCategories = ['ALL', 'AI VIDEO', 'SHORTS', 'REELS'];
 
 /* ── Page ───────────────────────────────────────────────── */
