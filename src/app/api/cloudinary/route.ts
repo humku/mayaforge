@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const CLOUD_NAME = "dzsq6win3";
-
 const FOLDERS = [
   "Flag_Design",
   "Tapestry_art",
@@ -15,32 +14,25 @@ const FOLDERS = [
 
 async function fetchFolder(folder: string) {
   const url = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/${folder}.json`;
-  const res = await fetch(url, { next: { revalidate: 3600 } });
+  const res = await fetch(url);
   if (!res.ok) return [];
   const data = await res.json();
-  return (data.resources || []).map((r: { public_id: string; width: number; height: number }) => ({
+  return (data.resources || []).map((r: { public_id: string }) => ({
     public_id: r.public_id,
-    secure_url: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`,
-    width: r.width,
-    height: r.height,
+    url: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto,w_800/${r.public_id}.png`,
     folder,
   }));
 }
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const folder = searchParams.get("folder");
-
+  const folder = new URL(request.url).searchParams.get("folder");
   try {
     if (folder) {
-      const resources = await fetchFolder(folder);
-      return NextResponse.json({ resources });
+      return NextResponse.json({ resources: await fetchFolder(folder) });
     }
-    const results = await Promise.all(FOLDERS.map(fetchFolder));
-    const resources = results.flat();
-    return NextResponse.json({ resources });
-  } catch (err) {
-    console.error("[CLOUDINARY API]", err);
-    return NextResponse.json({ error: "Failed to fetch images", resources: [] }, { status: 500 });
+    const all = await Promise.all(FOLDERS.map(fetchFolder));
+    return NextResponse.json({ resources: all.flat() });
+  } catch {
+    return NextResponse.json({ resources: [] }, { status: 500 });
   }
 }
