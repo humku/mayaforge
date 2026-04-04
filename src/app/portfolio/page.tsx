@@ -7,7 +7,7 @@ import MagicCursor from '@/components/MagicCursor';
 
 const CLOUD = "dzsq6win3";
 const img = (publicId: string) =>
-  `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_800/${publicId}`;
+  `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_800/${publicId}.png`;
 
 const images = [
   { id: 1, category: 'FLAG DESIGN',  title: 'Flag Design',         src: img('flag_design_abetne'),           wide: true  },
