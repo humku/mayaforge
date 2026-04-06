@@ -169,7 +169,14 @@ export default function PortfolioPage() {
                         className="break-inside-avoid mb-3 group cursor-pointer relative overflow-hidden"
                         style={{border:'1px solid rgba(201,168,76,0.08)'}}
                         onClick={() => setLightbox({ open: true, url: item.url, index: i })}>
-                        <img src={item.url} alt={item.public_id} className="w-full block transition-all duration-500 group-hover:scale-105 group-hover:brightness-110" loading="lazy" />
+                        <img 
+  src={item.url} 
+  alt={item.public_id} 
+  className="w-full block transition-all duration-700 group-hover:scale-105 group-hover:brightness-110 opacity-0"
+  loading="lazy"
+  onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+  style={{transition: 'opacity 0.5s ease, transform 0.7s ease'}}
+/>
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                           style={{background:'rgba(8,8,8,0.5)'}}>
                           <span className="material-symbols-outlined text-3xl" style={{fontFamily:'Material Symbols Outlined', color:'#e8c97a'}}>zoom_in</span>
