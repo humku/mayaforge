@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
   const resources = folders.flatMap(f =>
     (FOLDER_IMAGES[f] || []).map(id => ({
       public_id: id,
-      url: `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_800/${id}.png`,
+      url: `https://res.cloudinary.com/${CLOUD}/image/upload/${id}.png`,
       folder: f,
     }))
   );
