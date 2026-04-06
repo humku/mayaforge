@@ -1,52 +1,52 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const CLOUD = "dzsq6win3";
+const CLOUD      = "dzsq6win3";
+const API_KEY    = process.env.CLOUDINARY_API_KEY!;
+const API_SECRET = process.env.CLOUDINARY_API_SECRET!;
 
-// These are your actual public IDs from Cloudinary
-// No API keys needed - direct public URLs
-const FOLDER_IMAGES: Record<string, string[]> = {
-  Flag_Design: [
-    "flag_design_abetne",
-    "flag_design_21_y6oxdx",
-  ],
-  Dishwasher: [
-    "Diswasher_magnet_5_tyh5ny",
-    "Diswasher_magnet_7_kxurtv",
-  ],
-  Metal_Indoor_signs: [
-    "metal_indoor_signs_47_r2dnao",
-    "metal_indoor_signs_7_s6s8ii",
-  ],
-  custom_Table_runner: [
-    "Custom_Table_Runner_cs3haz",
-    "Custom_Table_Runner_10_wa8zqp",
-  ],
-  Tapestry_art: [
-    "TAPESTRY_9_erdg1p",
-  ],
-  Wall_Canvas: [
-    "WALLCANVAS_8_aimsbu",
-  ],
-  Wall_canvas_set_3: [
-    "Wall_canvas_set_3_7_s0f153",
-  ],
-  Large_Banner: [
-    "Large_custom_Banners_12_bmquvm",
-  ],
-};
+const FOLDERS = [
+  "Flag_Design",
+  "Tapestry_art",
+  "Metal_Indoor_signs",
+  "Large_Banner",
+  "Dishwasher",
+  "custom_Table_runner",
+  "Wall_Canvas",
+  "Wall_canvas_set_3",
+];
+
+async function fetchFolder(folder: string) {
+  const auth = Buffer.from(`${API_KEY}:${API_SECRET}`).toString("base64");
+  const url  = `https://api.cloudinary.com/v1_1/${CLOUD}/resources/image?prefix=${folder}&type=upload&max_results=500`;
+  
+  const res = await fetch(url, {
+    headers: { Authorization: `Basic ${auth}` },
+  });
+
+  if (!res.ok) {
+    console.error(`Cloudinary error for ${folder}: ${res.status} ${res.statusText}`);
+    return [];
+  }
+
+  const data = await res.json();
+  return (data.resources || []).map((r: { public_id: string }) => ({
+    public_id: r.public_id,
+    url: `https://res.cloudinary.com/${CLOUD}/image/upload/${r.public_id}.png`,
+    folder,
+  }));
+}
 
 export async function GET(request: NextRequest) {
   const folder = new URL(request.url).searchParams.get("folder");
-
-  const folders = folder ? [folder] : Object.keys(FOLDER_IMAGES);
-
-  const resources = folders.flatMap(f =>
-    (FOLDER_IMAGES[f] || []).map(id => ({
-      public_id: id,
-      url: `https://res.cloudinary.com/${CLOUD}/image/upload/${id}.png`,
-      folder: f,
-    }))
-  );
-
-  return NextResponse.json({ resources });
+  try {
+    if (folder) {
+      const resources = await fetchFolder(folder);
+      return NextResponse.json({ resources });
+    }
+    const all = await Promise.all(FOLDERS.map(fetchFolder));
+    return NextResponse.json({ resources: all.flat() });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ resources: [] }, { status: 500 });
+  }
 }
