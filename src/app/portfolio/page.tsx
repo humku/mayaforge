@@ -150,9 +150,16 @@ export default function PortfolioPage() {
           {activeTab === 'images' && (
             <>
               {loading ? (
-                <div className="flex flex-col items-center justify-center py-40 gap-6">
-                  <div className="w-12 h-12 rounded-full border-2 border-t-[#c9a84c] border-[rgba(201,168,76,0.1)] animate-spin" />
-                  <p className="font-mono text-[10px] tracking-[0.4em] uppercase" style={goldText}>LOADING...</p>
+                <div className="columns-2 md:columns-3 lg:columns-4 gap-3">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={i} className="break-inside-avoid mb-3 animate-pulse"
+                      style={{
+                        height: i % 3 === 0 ? '280px' : i % 3 === 1 ? '200px' : '240px',
+                        background:'linear-gradient(90deg, #111 0%, #1a1a1a 50%, #111 100%)',
+                        border:'1px solid rgba(201,168,76,0.06)'
+                      }}
+                    />
+                  ))}
                 </div>
               ) : images.length === 0 ? (
                 <div className="flex items-center justify-center py-40">
@@ -245,7 +252,7 @@ export default function PortfolioPage() {
               <span className="material-symbols-outlined" style={{fontFamily:'Material Symbols Outlined', color:'#e8c97a'}}>chevron_left</span>
             </button>
           )}
-          <img src={lightbox.url} className="max-w-full max-h-[85vh] object-contain"
+          <img src={lightbox.url.replace('w_600,c_scale,q_70/', '')} className="max-w-full max-h-[85vh] object-contain"
             style={{border:'1px solid rgba(201,168,76,0.15)'}}
             onClick={e => e.stopPropagation()} />
           {lightbox.index < images.length - 1 && (

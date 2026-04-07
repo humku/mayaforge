@@ -31,7 +31,7 @@ async function fetchFolder(folder: string) {
   const data = await res.json();
   return (data.resources || []).map((r: { public_id: string }) => ({
     public_id: r.public_id,
-    url: `https://res.cloudinary.com/${CLOUD}/image/upload/${r.public_id}.png`,
+    url: `https://res.cloudinary.com/${CLOUD}/image/upload/w_600,c_scale,q_70/${r.public_id}.png`,
     folder,
   }));
 }
